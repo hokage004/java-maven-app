@@ -29,7 +29,7 @@ pipeline {
         stage("build image") {
             steps {
                 script {
-                    buildImage()
+                    buildImage 'hokage004/demo-app:3.0'
                 }
             }
         }
