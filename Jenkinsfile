@@ -2,6 +2,10 @@ pipeline {
   agent any // agent defines where this script should be executed (relevant on Jenkins clusters)
   stages {
     stage("build") {
+      when {
+        expression {
+          env.BRANCH_NAME == 'dev"  || env.BRANCH_NAME == "master"
+        }
       steps {
         echo 'building the application...'
       }
