@@ -1,37 +1,20 @@
 pipeline {
-  agent any
+  agent any // agent defines where this script should be executed (relevant on Jenkins clusters)
   stages {
-     stage("test") {
+    stage("build") {
       steps {
-        script {
-          echo 'testing the application...'
-          echo 'Executing  pipeling for the branch $BRANCH_NAME'
-        }
+        echo 'building the application...'
       }
     }
-    stage("build") {
-        when {
-            expression {
-                BRANCH_NAME == "master"
-            }
-        }
+    stage("test") {
       steps {
-        script {
-          echo 'building the application...'
-        }
+        echo 'testing the application...'
       }
     }
     stage("deploy") {
-        when {
-            expression {
-                BRANCH_NAME == "master"
-            }
-        }
       steps {
-        script {
-          echo 'deploying the application...'
-        }
+        echo 'deploying the application...'
       }
     }
   }
-} 
+}
